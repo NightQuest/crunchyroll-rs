@@ -1,10 +1,13 @@
 //! Url parsing.
 
 use regex::Regex;
+use serde::Serialize;
 
 /// Types of Crunchyroll urls, pointing to media.
 #[cfg_attr(docsrs, doc(cfg(feature = "parse")))]
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Serialize)]
+#[serde(tag = "type")]
+#[serde(rename_all(serialize = "snake_case"))]
 pub enum UrlType {
     /// The parsed url points to a series. Use [`crate::Series::from_id`] with the value of this
     /// field to get a usable struct out of it.

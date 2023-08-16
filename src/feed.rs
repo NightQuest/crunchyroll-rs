@@ -90,6 +90,8 @@ pub struct SimilarFeed {
 
 /// Items which can be shown on the home feed.
 #[derive(Clone, Debug, Serialize, Request)]
+#[serde(tag = "type")]
+#[serde(rename_all(serialize = "snake_case"))]
 pub enum HomeFeed {
     /// The feed at the top of the Crunchyroll website.
     CarouselFeed(Vec<FeedCarousel>),

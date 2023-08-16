@@ -12,7 +12,9 @@ use std::sync::Arc;
 /// Collection of all media types. Useful in situations where [`Media`] can contain more than one
 /// specific media.
 #[allow(clippy::large_enum_variant)]
-#[derive(Serialize, Clone, Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq, Serialize)]
+#[serde(tag = "type")]
+#[serde(rename_all(serialize = "snake_case"))]
 pub enum MediaCollection {
     Series(Series),
     Season(Season),
